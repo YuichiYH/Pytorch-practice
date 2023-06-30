@@ -1,12 +1,16 @@
 import numpy as np
 
-# Linear Function
+# Predict a Linear Function without bias only weight
 
 # f = w * X
 # f = 2 * X
+# Input
 X = np.array ([1,2,3,4], dtype=np.float32)
+
+# Predicted Output
 Y = np.array ([2,4,6,8], dtype=np.float32)
 
+# Weight
 w = 0.0
 
 # forwardpass
