@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 
 # Predict a Linear Function without bias only weight
 
@@ -18,8 +19,12 @@ def forward(x):
     return w * x
 
 # loss = MSE
-def loss(y, y_predicted):
-    return ((y_predicted-y)**2).mean()
+# def loss(y, y_predicted):
+
+#     return ((y_predicted-y)**2).mean()
+
+# MSE = Mean Square Error
+loss = nn.MSELoss()
 
 # gradient
 # gradient
@@ -38,6 +43,13 @@ print(f'Prediction before training: f(5) = {forward(5):.3f}')
 learning_rate = torch.tensor(0.01, dtype=torch.float32)
 n_iters = 100
 
+
+
+# Stochastic gradient descent
+# It needs parameters, the weights
+# and the learning rate
+optimizer = torch.optim.SGD([w], lr=learning_rate)
+
 for epoch in range(n_iters):
     #prediction = foward pass
     y_pred = forward(X)
@@ -49,11 +61,12 @@ for epoch in range(n_iters):
     l.backward()
 
     #update
-    with torch.no_grad():
-        w -= learning_rate * w.grad
+    # with torch.no_grad():
+    #     w -= learning_rate * w.grad
+    optimizer.step()
 
     # Zero gradient
-    w.grad.zero_()
+    optimizer.zero_grad()
 
     if epoch % 10 == 0:
         print(f'epoch {epoch+1}: w = {w:.3f}, loss = {l:.8f}')

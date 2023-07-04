@@ -22,6 +22,10 @@ def loss(y, y_predicted):
     return ((y_predicted-y)**2).mean()
 
 # gradient
+# w*x = predicted output
+# y = correct output
+# N = number of iterations, because its the mean(average)
+
 # MSE = 1/N * (w*x - y)**2
 # d3/dw = 1/N 2x (w*x - y)
 
