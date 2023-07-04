@@ -20,7 +20,6 @@ def forward(x):
 
 # loss = MSE
 # def loss(y, y_predicted):
-
 #     return ((y_predicted-y)**2).mean()
 
 # MSE = Mean Square Error
